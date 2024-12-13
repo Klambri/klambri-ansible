@@ -9,7 +9,7 @@ import (
 
 func main() {
 	playbookConfig := &models.PlaybookConfig{
-		PlaybookName: "../playbooks/hello-world.yaml",
+		PlaybookName: "playbooks/package.yml",
 		Hosts:        []string{"127.0.0.1", "127.0.0.1"},
 	}
 
