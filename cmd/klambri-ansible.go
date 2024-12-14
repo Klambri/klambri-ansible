@@ -1,13 +1,22 @@
 package main
 
 import (
-	natsclient "klambri-ansible/internal/nats-client"
+	"fmt"
+	"klambri-ansible/internal/ansible"
+	"klambri-ansible/internal/models"
 	"log"
 )
 
 func main() {
-	err := natsclient.Run()
+	playbookConfig := &models.PlaybookConfig{
+		PlaybookName: "playbooks/package.yml",
+		Hosts:        []string{"127.0.0.1", "127.0.0.1"},
+	}
+
+	err := ansible.Run(playbookConfig)
 	if err != nil {
-		log.Fatalf("Error running NATS client: %s", err)
+		log.Fatalf("Error running playbook: %v", err)
+	} else {
+		fmt.Println("Playbook executed successfully!")
 	}
 }

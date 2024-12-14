@@ -7,10 +7,11 @@ import (
 	"github.com/apenella/go-ansible/v2/pkg/playbook"
 )
 
-func runPlaybook(playbookName string, inventory string) error {
+func runPlaybook(playbookName string, inventory string, extraVars map[string]interface{}) error {
 	ansiblePlaybookOptions := &playbook.AnsiblePlaybookOptions{
 		Connection: "local",
 		Inventory:  inventory,
+		ExtraVars:  extraVars,
 	}
 
 	playbookCmd := playbook.NewAnsiblePlaybookCmd(
